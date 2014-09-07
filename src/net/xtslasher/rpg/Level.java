@@ -9,8 +9,10 @@ import org.newdawn.slick.tiled.TiledMap;
 public class Level {
 	
 	public int width = 100, height = 100;
-	
+
 	public Background[][] bg = new Background[width][height];
+	public Solid[][] solid = new Solid[width][height];
+	public Item[][] item = new Item[width][height];
 	
 	public final String Dpath = "res/World/level_";
 	public String path = Dpath;
@@ -30,6 +32,8 @@ public class Level {
 		for(int x=0;x<bg.length;x++) {
 			for(int y=0;y<bg[0].length;y++) {
 				bg[x][y] = new Background(new Rectangle(x * Tile.size, y * Tile.size, Tile.size, Tile.size), Tile.blank);
+				solid[x][y] = new Solid(new Rectangle(x * Tile.size, y * Tile.size, Tile.size, Tile.size), Tile.blank);
+				item[x][y] = new Item(new Rectangle(x * Tile.size, y * Tile.size, Tile.size, Tile.size), Tile.blank);
 			}
 		}
 		
@@ -39,11 +43,12 @@ public class Level {
 	public void loadWorld() {
 		System.out.println("Loading World");
 		int background = map.getLayerIndex("background");
-		//int solids = map.getLayerIndex("collison");
-		//int items = map.getLayerIndex("items");
+		int solids = map.getLayerIndex("collison");
+		int items = map.getLayerIndex("items");
 		
 		for(int x=0;x<bg.length;x++) {
 			for(int y=0;y<bg[0].length;y++) {
+				//background
 				if(map.getTileId(x, y, background) == 1) {
 					bg[x][y].id = Tile.grass;
 				}
@@ -66,13 +71,23 @@ public class Level {
 					bg[x][y].id = Tile.road_CurveDownLeft;
 				}
 				if(map.getTileId(x, y, background) == 8) {
-					bg[x][y].id = Tile.road_CurveDownLeft;
+					bg[x][y].id = Tile.road_CurveDownRight;
 				}
+				
+				//solids
+				//if(map.getTileId(x, y, solids) == 65) {
+				//	solid[x][y].id = Tile.grass;
+				//}
+				
+				//items
+				//if(map.getTileId(x, y, items) == 129) {
+				//	item[x][y].id = Tile.grass;
+				//}
 			}
 		}
 	}
 	
-	public void tick() {
+	public void tick(double delta) {
 		
 	}
 	

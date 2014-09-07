@@ -33,9 +33,9 @@ public class Tile {
 	public Tile() {
 		try {
 			Tile.background = ImageIO.read(new File("res/bg.png"));
-			//Tile.terrain = ImageIO.read(new File("res/terrain.png"));
-			//Tile.characters = ImageIO.read(new File("res/chars.png"));
-			//Tile.items = ImageIO.read(new File("res/items.png"));
+			Tile.terrain = ImageIO.read(new File("res/terrain.png"));
+			Tile.characters = ImageIO.read(new File("res/chars.png"));
+			Tile.items = ImageIO.read(new File("res/items.png"));
 		} catch (Exception e) {
 			System.out.println("Error loading images");
 			e.printStackTrace();
