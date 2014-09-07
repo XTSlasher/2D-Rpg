@@ -22,6 +22,8 @@ public class Core extends Applet implements Runnable {
 	
 	private Image screen;
 	
+	public Level level;
+	
 	public static Dimension screenSize = new Dimension(700, 560);
 	public static Dimension pixel = new Dimension(screenSize.width / res, screenSize.height);
 	public static Dimension Size;
@@ -46,12 +48,15 @@ public class Core extends Applet implements Runnable {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		core.start();
 	}
 	
 	public void start() {
 		requestFocus();
 		
 		//define classes
+		level = new Level(1);
+		new Tile();
 		
 		run = true;
 		new Thread(this).start();
@@ -62,11 +67,13 @@ public class Core extends Applet implements Runnable {
 	}
 	
 	public void tick() {
-		
+		level.tick();
 	}
 	
 	public void render() {
 		Graphics g = screen.getGraphics();
+		
+		level.render(g, (int)oX, (int)oY, (pixel.width / Tile.size) + 2, (pixel.height / Tile.size) + 2);
 		
 		g = getGraphics();
 		g.drawImage(screen, 0, 0, screenSize.width, screenSize.height, 0, 0, pixel.width, pixel.height, null);
