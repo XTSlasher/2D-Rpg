@@ -43,8 +43,8 @@ public class Level {
 	public void loadWorld() {
 		System.out.println("Loading World");
 		int background = map.getLayerIndex("background");
-		int solids = map.getLayerIndex("collison");
-		int items = map.getLayerIndex("items");
+		//int solids = map.getLayerIndex("collison");
+		//int items = map.getLayerIndex("items");
 		
 		for(int x=0;x<bg.length;x++) {
 			for(int y=0;y<bg[0].length;y++) {
