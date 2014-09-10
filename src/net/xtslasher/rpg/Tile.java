@@ -27,7 +27,6 @@ public class Tile {
 	
 	//characters
 	
-	
 	public static int size = 32;
 	public static BufferedImage terrain, background, items, characters;
 	
