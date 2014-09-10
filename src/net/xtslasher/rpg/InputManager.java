@@ -10,20 +10,20 @@ public class InputManager implements KeyListener {
 
 		switch (key) {
 			case KeyEvent.VK_W:
-				Core.player.isMoving = true;
-				Core.player.up = true;
+				EntityPlayer.isMoving = true;
+				Core.bW = true;
 				break;
 			case KeyEvent.VK_D:
-				Core.player.isMoving = true;
-				Core.player.right = true;
+				EntityPlayer.isMoving = true;
+				Core.bD = true;
 				break;
 			case KeyEvent.VK_A:
-				Core.player.isMoving = true;
-				Core.player.left = true;
+				EntityPlayer.isMoving = true;
+				Core.bA = true;
 				break;
 			case KeyEvent.VK_S:
-				Core.player.isMoving = true;
-				Core.player.down = true;
+				EntityPlayer.isMoving = true;
+				Core.bS = true;
 				break;
 		}
 	}
@@ -33,20 +33,20 @@ public class InputManager implements KeyListener {
 
 		switch (key) {
 			case KeyEvent.VK_W:
-				Core.player.isMoving = false;
-				Core.player.up = false;
+				EntityPlayer.isMoving = false;
+				Core.bW = false;
 				break;
 			case KeyEvent.VK_D:
-				Core.player.isMoving = false;
-				Core.player.right = false;
+				EntityPlayer.isMoving = false;
+				Core.bD = false;
 				break;
 			case KeyEvent.VK_A:
-				Core.player.isMoving = false;
-				Core.player.left = false;
+				EntityPlayer.isMoving = false;
+				Core.bA = false;
 				break;
 			case KeyEvent.VK_S:
-				Core.player.isMoving = false;
-				Core.player.down = false;
+				EntityPlayer.isMoving = false;
+				Core.bS = false;
 				break;
 		}
 	}

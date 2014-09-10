@@ -23,9 +23,11 @@ public class Tile {
 	
 
 	//items
+	public static int[] item_bottle = {0, 0};
 	
 	
 	//characters
+	
 	
 	public static int size = 32;
 	public static BufferedImage terrain, background, items, characters;

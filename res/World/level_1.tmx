@@ -3,9 +3,17 @@
  <tileset firstgid="1" name="bg" tilewidth="32" tileheight="32">
   <image source="../bg.png" width="256" height="256"/>
  </tileset>
+ <tileset firstgid="65" name="items" tilewidth="32" tileheight="32">
+  <image source="../items.png" width="256" height="256"/>
+ </tileset>
  <layer name="background" width="100" height="100">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3YQQqDQBAAwZWYxP+/2HwgELKIjdahjnsYGhZmljHGAgAAAAAAAAAAAAAAF7R9PCa8AzNcyXrye/Qo06NFjxY9WvRo0aNFjxY9/jezR3/z1CPVY/bececeR/BftejRokeLHi16tOjRokeLHi16tLzGufcWAAAAAAAAAAAAAAAAAAAAAAAA4Dc7BHjLBkCcAAA=
+  </data>
+ </layer>
+ <layer name="items" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OMQ0AAAgDsFnDvyk07CA8rYImAAAAAAAAAAAAAAAAAADApfkOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlQWN2Lz+QJwAAA==
   </data>
  </layer>
 </map>

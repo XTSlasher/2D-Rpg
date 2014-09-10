@@ -8,16 +8,21 @@ import org.newdawn.slick.tiled.TiledMap;
 
 public class Level {
 	
-	public int width = 100, height = 100;
+	public static int width = 100;
+	public static int height = 100;
 
-	public Background[][] bg = new Background[width][height];
-	public Solid[][] solid = new Solid[width][height];
-	public Item[][] item = new Item[width][height];
+	public static Background[][] bg = new Background[width][height];
+	public static Solid[][] solid = new Solid[width][height];
+	public static Item[][] item = new Item[width][height];
 	
 	public final String Dpath = "res/World/level_";
 	public String path = Dpath;
 	
-	public TiledMap map = null;
+	public static TiledMap map = null;
+	
+	public static int background;
+	//public static int solids;
+	public static int items;
 	
 	public Level(int id) {
 		path = Dpath + Integer.toString(id) + ".tmx";
@@ -40,11 +45,36 @@ public class Level {
 		loadWorld();
 	}
 	
+	public static void getTilebyID(int layer, double x, double y) {		
+		if(layer == 0) {
+			for(int x1=0;x1<bg.length;x1++) {
+				for(int y1=0;y1<bg[0].length;y1++) {
+					if(x1 == (int)x/Tile.size && y1 == (int)y/Tile.size) {
+						if(map.getTileId(x1, y1, background) == 1) {
+							System.out.println("Grass");
+						}
+					}
+				}
+			}
+		} else if(layer == 2){
+			for(int x1=0;x1<item.length;x1++) {
+				for(int y1=0;y1<item[0].length;y1++) {
+					if((int)x/Tile.size == x1 && (int)y/Tile.size == y1) {
+						if(map.getTileId(x1, y1, items) == 65) {
+							System.out.println("Bottle");
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	public void loadWorld() {
 		System.out.println("Loading World");
-		int background = map.getLayerIndex("background");
-		int solids = map.getLayerIndex("collison");
-		int items = map.getLayerIndex("items");
+		
+		background = map.getLayerIndex("background");
+		//solids = map.getLayerIndex("collison");
+		items = map.getLayerIndex("items");
 		
 		for(int x=0;x<bg.length;x++) {
 			for(int y=0;y<bg[0].length;y++) {
@@ -74,15 +104,18 @@ public class Level {
 					bg[x][y].id = Tile.road_CurveDownRight;
 				}
 				
+				//items
+				if(map.getTileId(x, y, items) == 65) {
+					item[x][y].id = Tile.item_bottle;
+					System.out.println("X: " + x + " Y: " + y);
+				}
+				
 				//solids
 				//if(map.getTileId(x, y, solids) == 65) {
 				//	solid[x][y].id = Tile.grass;
 				//}
 				
-				//items
-				//if(map.getTileId(x, y, items) == 129) {
-				//	item[x][y].id = Tile.grass;
-				//}
+				
 			}
 		}
 	}
@@ -96,6 +129,14 @@ public class Level {
 			for(int y=(camY / Tile.size); y<(camY / Tile.size) + renY; y++) {
 				if(x >= 0 && y >= 0 && x < width && y < height) {
 					bg[x][y].render(g);
+				}
+			}
+		}
+		
+		for(int x=(camX / Tile.size); x<(camX / Tile.size) + renX; x++) {
+			for(int y=(camY / Tile.size); y<(camY / Tile.size) + renY; y++) {
+				if(x >= 0 && y >= 0 && x < width && y < height) {
+					item[x][y].render(g);
 				}
 			}
 		}
