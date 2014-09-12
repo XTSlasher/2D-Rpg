@@ -103,6 +103,7 @@ public class Core extends Applet implements Runnable {
 		g.setColor(Color.WHITE);
 		g = getGraphics();
 		g.drawImage(screen, 0, 0, screenSize.width, screenSize.height, 0, 0, pixel.width, pixel.height, null);
+		//Offset by pixel.width and pixel.height
 		g.dispose();
 	}
 	
